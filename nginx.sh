@@ -24,10 +24,10 @@ BACKUP_FILE="$BACKUP_DIR/default.bak.$(date +%Y%m%d%H%M%S)"
 cp "$NGINX_CONFIG" "$BACKUP_FILE"
 echo "Backup created: $BACKUP_FILE"
 
-# Replace ports in the configuration file
+# Replace ports in the configuration file (IPv4 and IPv6)
 sed -i -E \
-    -e 's/443/444/g' \
-    -e 's/80/82/g' \
+    -e 's/\b443\b/444/g' \
+    -e 's/\b80\b/82/g' \
     "$NGINX_CONFIG"
 
 # Validate the Nginx configuration
